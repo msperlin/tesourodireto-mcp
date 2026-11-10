@@ -2,12 +2,12 @@
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
     "servers": {
-      "tesouro-direto-mcp": {
+      "tesourodireto-mcp": {
         "type": "local",
         "command": [
-          "/home/msperlin/GitRepo/mcp-servers/tesouro-direto-mcp/.venv/bin/python",
+          "/home/msperlin/GitRepo/mcp-servers/tesourodireto-mcp/.venv/bin/python",
           "-m",
-          "tesouro_direto_mcp"
+          "tesourodireto_mcp"
         ]
       }
     }

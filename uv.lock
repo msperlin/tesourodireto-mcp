@@ -1206,7 +1206,7 @@ wheels = [
 ]
 
 [[package]]
-name = "tesouro-direto-mcp"
+name = "tesourodireto-mcp"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

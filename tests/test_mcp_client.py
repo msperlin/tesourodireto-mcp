@@ -18,7 +18,7 @@ async def test_stdio_server_roundtrip(tmp_path):
     }
     params = StdioServerParameters(
         command=sys.executable,
-        args=["-m", "tesouro_direto_mcp"],
+        args=["-m", "tesourodireto_mcp"],
         env=env,
         cwd=str(Path(__file__).parents[1]),
     )

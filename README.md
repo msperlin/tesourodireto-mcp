@@ -1,4 +1,4 @@
-# tesouro-direto-mcp
+# tesourodireto-mcp
 
 An MCP server for **Brazilian government bonds (Tesouro Direto)** — historical
 prices and yields, current rates, per-maturity statistics and the ANBIMA yield
@@ -15,7 +15,7 @@ Transparente CKAN open data portal, so no R installation is required.
   from Tesouro Transparente and reproduces `GetTDData::td_get2()` semantics.
 - **Robust downloads.** Retries, validates the CSV header before replacing the
   cache, and falls back to a previously valid cache when the portal is down.
-- **Local cache.** One download per day, stored in `~/.cache/tesouro-direto-mcp`
+- **Local cache.** One download per day, stored in `~/.cache/tesourodireto-mcp`
   (configurable), with an in-memory parsed cache for fast repeated calls.
 - **Token-efficient output.** CSV with a short comment header — not thousands
   of repetitive JSON records. Long series can be aggregated monthly/yearly.
@@ -52,22 +52,22 @@ Resources: `tesouro://catalog/bond-types`. Prompt: `analyze_bond`.
 Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/).
 
 ```sh
-git clone https://github.com/msperlin/tesouro-direto-mcp.git
-cd tesouro-direto-mcp
+git clone https://github.com/msperlin/tesourodireto-mcp.git
+cd tesourodireto-mcp
 uv sync
 ```
 
 Run over stdio:
 
 ```sh
-uv run tesouro-direto-mcp
+uv run tesourodireto-mcp
 ```
 
 Or install it as a standalone tool:
 
 ```sh
 uv tool install .
-tesouro-direto-mcp
+tesourodireto-mcp
 ```
 
 ## Register with OpenCode
@@ -79,12 +79,12 @@ Add to `~/.config/opencode/opencode.json` (or a project `opencode.json`):
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
     "servers": {
-      "tesouro-direto-mcp": {
+      "tesourodireto-mcp": {
         "type": "local",
         "command": [
-          "/home/msperlin/GitRepo/mcp-servers/tesouro-direto-mcp/.venv/bin/python",
+          "/home/msperlin/GitRepo/mcp-servers/tesourodireto-mcp/.venv/bin/python",
           "-m",
-          "tesouro_direto_mcp"
+          "tesourodireto_mcp"
         ]
       }
     }
@@ -95,7 +95,7 @@ Add to `~/.config/opencode/opencode.json` (or a project `opencode.json`):
 Or with `uv`, without hard-coding a virtualenv path:
 
 ```jsonc
-"command": ["uv", "run", "--directory", "/path/to/tesouro-direto-mcp", "tesouro-direto-mcp"]
+"command": ["uv", "run", "--directory", "/path/to/tesourodireto-mcp", "tesourodireto-mcp"]
 ```
 
 ## Register with Claude Desktop
@@ -103,9 +103,9 @@ Or with `uv`, without hard-coding a virtualenv path:
 ```jsonc
 {
   "mcpServers": {
-    "tesouro-direto-mcp": {
+    "tesourodireto-mcp": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/msperlin/tesouro-direto-mcp", "tesouro-direto-mcp"]
+      "args": ["--from", "git+https://github.com/msperlin/tesourodireto-mcp", "tesourodireto-mcp"]
     }
   }
 }
@@ -149,7 +149,7 @@ ref_date,yield_bid,yield_bid_pct,price_bid,asset_code,matur_date
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `TESOURO_DIRETO_CACHE_DIR` | `~/.cache/tesouro-direto-mcp` | Where the raw CSV is cached. |
+| `TESOURO_DIRETO_CACHE_DIR` | `~/.cache/tesourodireto-mcp` | Where the raw CSV is cached. |
 | `TESOURO_DIRETO_CSV_URL` | Official CKAN resource URL | Override with a direct CSV URL or a local file path (useful offline/tests). |
 | `MCP_TRANSPORT` | `stdio` | `stdio`, `streamable-http` or `sse`. |
 | `MCP_HOST` / `MCP_PORT` | `127.0.0.1` / `8000` | Bind address for HTTP transports. |
@@ -165,7 +165,7 @@ uv run python scripts/smoke_test.py   # live test against Tesouro/ANBIMA
 The test suite uses a small CSV fixture, so it does not need network access.
 The smoke test downloads the real dataset and the current ANBIMA curve.
 
-The ANBIMA business-day calendar (`src/tesouro_direto_mcp/anbima_holidays.txt`)
+The ANBIMA business-day calendar (`src/tesourodireto_mcp/anbima_holidays.txt`)
 was exported from the `bizdays` Brazil/ANBIMA calendar used by `GetTDData`, so
 curve maturity dates match the R package.
 

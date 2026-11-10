@@ -12,7 +12,7 @@ import asyncio
 import json
 import sys
 
-from tesouro_direto_mcp import server
+from tesourodireto_mcp import server
 
 
 def ok(label: str, detail: str = "") -> None:

@@ -64,7 +64,7 @@ Do not invent prices or yields; report what the tools return.
 """
 
 mcp = MCPServer(
-    "tesouro-direto-mcp",
+    "tesourodireto-mcp",
     title="Tesouro Direto — Brazilian Government Bonds",
     description=(
         "Historical prices, yields and current rates for Brazilian government "
@@ -387,7 +387,7 @@ async def get_bond_data(
             hint=(
                 "Check the internet connection or set TESOURO_DIRETO_CSV_URL to a "
                 "local/direct CSV file. The raw cache lives in "
-                "~/.cache/tesouro-direto-mcp."
+                "~/.cache/tesourodireto-mcp."
             ),
         )
 

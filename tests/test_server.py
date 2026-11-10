@@ -3,14 +3,14 @@ from datetime import date
 
 import pytest
 
-from tesouro_direto_mcp import server
-from tesouro_direto_mcp.catalog import (
+from tesourodireto_mcp import server
+from tesourodireto_mcp.catalog import (
     InvalidAssetCode,
     bond_types,
     normalize_asset_codes,
 )
-from tesouro_direto_mcp.data import BondRecord
-from tesouro_direto_mcp.yield_curve import YieldCurvePoint
+from tesourodireto_mcp.data import BondRecord
+from tesourodireto_mcp.yield_curve import YieldCurvePoint
 
 RECORDS = [
     BondRecord(date(2024, 1, 2), 0.105, 900.10, "LTN 010125", date(2025, 1, 1), "Tesouro Prefixado"),
@@ -104,8 +104,8 @@ async def test_get_bond_data_truncates_most_recent(fake_dataset):
     assert "TRUNCATED" not in text
 
     # a narrow max_rows is not allowed by the schema (ge=10); test helper directly
-    from tesouro_direto_mcp.data import aggregate_records
-    from tesouro_direto_mcp.server import _keep_most_recent
+    from tesourodireto_mcp.data import aggregate_records
+    from tesourodireto_mcp.server import _keep_most_recent
 
     rows = aggregate_records(fake_dataset.records, "daily")
     kept, dropped = _keep_most_recent(rows, 2)
