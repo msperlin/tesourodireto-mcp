@@ -1,5 +1,8 @@
 # tesourodireto-mcp
 
+[![PyPI](https://img.shields.io/pypi/v/tesourodireto-mcp.svg)](https://pypi.org/project/tesourodireto-mcp/)
+[![tests](https://github.com/msperlin/tesourodireto-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/msperlin/tesourodireto-mcp/actions/workflows/tests.yml)
+
 An MCP server for **Brazilian government bonds (Tesouro Direto)** — historical
 prices and yields, current rates, per-maturity statistics and the ANBIMA yield
 curve — built for LLM agents.
@@ -49,21 +52,31 @@ Resources: `tesouro://catalog/bond-types`. Prompt: `analyze_bond`.
 
 ## Install
 
-Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/).
+Requires Python 3.10+.
+
+From [PyPI](https://pypi.org/project/tesourodireto-mcp/), no clone needed:
+
+```sh
+uvx tesourodireto-mcp
+```
+
+or with pip:
+
+```sh
+pip install tesourodireto-mcp
+tesourodireto-mcp
+```
+
+From source:
 
 ```sh
 git clone https://github.com/msperlin/tesourodireto-mcp.git
 cd tesourodireto-mcp
 uv sync
-```
-
-Run over stdio:
-
-```sh
 uv run tesourodireto-mcp
 ```
 
-Or install it as a standalone tool:
+Or install the checkout as a standalone tool:
 
 ```sh
 uv tool install .
@@ -105,7 +118,7 @@ Or with `uv`, without hard-coding a virtualenv path:
   "mcpServers": {
     "tesourodireto-mcp": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/msperlin/tesourodireto-mcp", "tesourodireto-mcp"]
+      "args": ["tesourodireto-mcp"]
     }
   }
 }
